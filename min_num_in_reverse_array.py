@@ -7,18 +7,19 @@
 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。
 '''
 
-array = [4,5,6,7,8,9,1,2,3]
+array = [6,7,8,9,12,15,17,1,2,3,4,5]
 
 def solution(array):
     first  = array[0]
 
-    while len(array) > 1:
+    while len(array) > 1 and array[0] > array[-1]:
         mid = len(array) // 2
         if array[mid] > first :
             array = array[mid+1:]
-        elif array[mid] < first :
+        elif array[mid] < first and len(array) > 2:
             array = array[:mid+1]
-
+        else:
+            array = [array[mid]]
     return array[0]
 
 result = solution(array)
